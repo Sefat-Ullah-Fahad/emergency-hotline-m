@@ -1,109 +1,7 @@
 
-// function getElement (id){
-//     const element = document.getElementById(id)
-//     return element
-// }
 
 
 
-
-// document.getElementById("card-btn-2").addEventListener('click', function(){
-//     const title = getElement('card-title-1').innerText
-//     const serviceNumber = getElement('card-service-number-1').innerText
-//     console.log(title, serviceNumber)
-    
-//     const cardContainer = getElement('card-container')
-
-
-//     const newCard = document.createElement("div");
-
-//     newCard.innerHTML = `
-//     <div class="flex place-content-between items-center rounded-[8px] bg-gray-100 p-5">
-//                         <div>
-//                             <h1 >card</h1>
-//                             <span>999</span>
-//                         </div>
-//                         <div class="time" id="timeBox"></div>
-//                     </div>
-                
-//     `
-
-//     cardContainer.append(newCard)
-
-
-
-// })
-
-//  const timeBox = document.getElementById('timeBox');
-//     const now = new Date();
-//     timeBox.textContent = now.toLocaleTimeString('en-US', {
-//       hour: 'numeric',
-//       minute: 'numeric',
-//       second: 'numeric',
-//       hour12: true
-//     });
-
-
-
-
-
-//  let copyCount = 0;
-
-// document.getElementById('copy-btn-1').addEventListener('click', function(){
-    
-//        const copyValue = getElement('copy').innerText
-//     const copyNumber = getElement('number1').innerText
-//      copyCount++;
-//       copyValue.textContent = copyCount ;
-
-//         navigator.clipboard.writeText(copyNumber).then(() => {
-//         alert('নম্বর কপি হয়েছে:' + " " + copyNumber);
-//     }) 
-// })
-// // document.getElementById('copy-btn-2').addEventListener('click', function(){
-    
-// //        const copyValue = getElement('copy')
-// //     const copyNumber = getElement('number1').innerText
-// //      copyCount++;
-// //       copyValue.textContent = copyCount ;
-
-// //         navigator.clipboard.writeText(copyNumber).then(() => {
-// //         alert('নম্বর কপি হয়েছে:' + " " + copyNumber );
-// //     }) 
-// // })
-
-// // সব Copy বাটন বের করি
-// const copyButtons = document.querySelectorAll("button[id^='copy-btn']");
-
-// // হেডারের Copy কাউন্টার
-// const copyCounter = document.getElementById("copy");
-
-// // কাউন্টার এর প্রাথমিক ভ্যালু
-// let counter = 0;
-
-// // প্রতিটি Copy বাটনের জন্য লুপ চালাই
-// copyButtons.forEach((btn) => {
-//   btn.addEventListener("click", () => {
-//     // কার্ডের ভেতরের নাম্বার খুঁজে বের করি
-//     const card = btn.closest(".bg-white"); // প্রতিটি কার্ড div
-//     const numberElement = card.querySelector("span[id^='number']");
-//     const number = numberElement.textContent;
-
-//     // ক্লিপবোর্ডে কপি করি
-//     navigator.clipboard.writeText(number).then(() => {
-//       console.log(`Copied: ${number}`);
-//     });
-
-//     // হেডারের কাউন্টার আপডেট করি
-//     counter++;
-//     copyCounter.textContent = counter;
-
-
-
-//   });
-// });
-
-// ================== COPY BUTTON HANDLE ==================
 // ================== COPY BUTTON HANDLE ==================
 const copyButtons = document.querySelectorAll("button[id^='copy-btn']");
 const copyCounter = document.getElementById("copy");
@@ -152,7 +50,7 @@ const callButtons = document.querySelectorAll("button[id^='card-btn']");
 const coinCounter = document.querySelector(
   "header div:first-child ~ div div:nth-child(2) span"
 ); // হেডারের কয়েন counter
-let coins = parseInt(coinCounter.textContent); // শুরুতে 100 কয়েন
+let coins = parseInt(coinCounter.textContent); // শুরুতে কয়েন
 
 const callHistoryBox = document.getElementById("card-container");
 const clearBtn = document.querySelector("aside button"); // Clear button
@@ -185,16 +83,16 @@ callButtons.forEach((btn) => {
       hour12: true,
     });
 
-    // Call History Item বানাও
+    // Call History Item বানাও (Card Design)
     const historyItem = document.createElement("div");
     historyItem.className =
-      "p-3 mb-2 border-b flex justify-between items-center text-sm";
+      "bg-white shadow-md rounded-lg p-3 mb-3 flex justify-between items-center";
     historyItem.innerHTML = `
       <div>
-        <span class="font-bold">${callTitle}</span><br/>
-        📞 ${callNumber}
+        <span class="font-semibold block">${callTitle}</span>
+        <span class="text-gray-700"> ${callNumber}</span>
       </div>
-      <span class="text-gray-500">${time}</span>
+      <span class="text-sm text-gray-500">${time}</span>
     `;
 
     callHistoryBox.prepend(historyItem); // হিস্টোরির উপরে যোগ করো
@@ -205,10 +103,6 @@ callButtons.forEach((btn) => {
 clearBtn.addEventListener("click", () => {
   callHistoryBox.innerHTML = "";
 });
-
-
-
-
 
     
 
